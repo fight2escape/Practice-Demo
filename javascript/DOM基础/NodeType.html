@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>IE/others浏览器nodetype</title>
+
+</head>
+<body>
+<div>这是一个文本节点</p>
+<script >
+	var nodeDiv = document.getElementsByTagName("div");
+	if(nodeDiv[0].nodeType == Node.ELEMENT_NODE){
+		alert("这是一个元素节点");
+	}
+	/*if(nodeDiv[0].nodeType == 1){
+		alert("这是一个 元素节点");
+	}*/
+</script>
+</body>
+</html>

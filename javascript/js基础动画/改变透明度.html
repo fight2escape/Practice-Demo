@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.change {
+			width:200px;
+			height:200px;
+			background:blue;
+			opacity:0.3;
+			filter:alpha(opacity:30);
+		}
+	</style>
+</head>
+<body>
+<script type="text/javascript">
+window.onload = function(){
+	var obj = document.getElementsByClassName('change')[0];
+	obj.onmouseover = function(){
+		changeOpacity(30,100,12);
+	}
+	obj.onmouseout = function(){
+		changeOpacity(100,50,10);
+	}
+}
+var timer = null;
+function changeOpacity(sta,s,sp){
+	var start = sta;
+	var stop = s;
+	var speed = sp;
+	clearInterval(timer);
+	var obj = document.getElementsByClassName('change')[0];
+	timer = setInterval(function(){
+		if(start < stop){
+			if(start >= stop){
+				clearInterval(timer);
+			}else{
+				start += speed;
+				if(start>stop){start = stop;}
+				obj.style.opacity = start/100;
+				obj.style.filter = "alpha(opacity:"+start+")";
+			}
+		}else{
+			if(start <= stop){
+				clearInterval(timer);
+			}else{
+				start -= speed;
+				if(start<stop){start = stop;}
+				obj.style.opacity = start/100;
+				obj.style.filter = "alpha(opacity:"+start+")";
+			}
+		}
+	},50);
+}
+
+</script>
+	<div class="change"></div>
+</body>
+</html>

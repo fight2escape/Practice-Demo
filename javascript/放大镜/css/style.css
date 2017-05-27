@@ -1,0 +1,36 @@
+*{
+	margin:0;
+	padding:0;
+}
+.demo,.exp{
+	border:1px solid #aaa;
+	margin:40px 20px;
+}
+.demo{
+	width:402px;
+	height:257px;
+	float:left;
+	position:relative;
+}
+.mask{
+	width:160px;
+	height:120px;
+	background:#ffffcc;
+	opacity:0.5;
+	filter:alpha(opacity=50);
+	border:1px solid #000;
+	position:absolute;
+	top:0;
+	left:0;
+	display:none;
+}
+.exp{
+	width:400px;
+	height:300px;
+	overflow:hidden;
+	float:left;
+	display:none;
+}
+#expimg{
+	position:relative;
+}

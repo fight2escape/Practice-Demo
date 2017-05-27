@@ -1,0 +1,21 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" Content="text/html; charset=utf-8">
+<title>js/test</title>
+<script language="javascript">
+function clock ( ) {
+	var date = new Date();
+	document.getElementById("clock").value = date;
+}
+var i;
+function start () {
+	i = setInterval("clock()",500);
+}
+</script>
+</head>
+<body>
+<input type="text" id="clock" value="" />
+<input type="button" id="start"  value="start" onclick="start()" />
+<input type="button" id="stop"  value="stop" onclick="clearInterval(i)" />
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片阴影</title>
+	<style type="text/css">
+	*{
+		margin:0;
+		padding:0;
+	}
+	/*曲线阴影*/
+	.myimg{
+		width: 500px;
+		height: 200px;
+		margin:30px auto;
+		text-align:center;
+		line-height: 200px;
+		font-size:30px;
+		letter-spacing: 5px;
+		background-color: #fff;
+	}
+	.shadow{
+		position:relative;
+		box-shadow: 0 2px 4px rgba(0,0,0,0.2),0 0 40px rgba(0,0,0,0.1) inset;
+		-o-box-shadow: 0 2px 4px rgba(0,0,0,0.2),0 0 40px rgba(0,0,0,0.1) inset;
+		-ms-box-shadow: 0 2px 4px rgba(0,0,0,0.2),0 0 40px rgba(0,0,0,0.1) inset;
+		-moz-box-shadow: 0 2px 4px rgba(0,0,0,0.2),0 0 40px rgba(0,0,0,0.1) inset;
+		-webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.2),0 0 40px rgba(0,0,0,0.1) inset;
+	}
+	.shadow::before,.shadow::after{
+		content:"";
+		position:absolute;
+		top:50%;
+		bottom:0px;
+		z-index:-1;
+		left:10px;
+		right:10px;
+		border-radius:200px/10px;
+		box-shadow:0 0 20px rgba(0,0,0,0.5);
+		-o-box-shadow:0 0 20px rgba(0,0,0,0.5);
+		-ms-box-shadow:0 0 20px rgba(0,0,0,0.5);
+		-moz-box-shadow:0 0 20px rgba(0,0,0,0.5);
+		-webkit-box-shadow:0 0 20px rgba(0,0,0,0.5);
+	}
+
+	/*翘边阴影*/
+	.showmore{
+		width: 960px;
+		height: 200px;
+		margin:0 auto;
+		list-style:none;
+	}
+	.showmore li{
+		width:250px;
+		margin-top:20px;
+		margin-left:20px;
+		height: 100%;
+		float:left;
+	}
+	.showmore img{
+		width: 100%;
+		height: 100%;
+	}
+	.cutesd li{
+		position: relative;
+		border:5px solid #fff;
+		box-shadow:0 0 5px rgba(0,0,0,0.2);
+	}
+	.cutesd li::after{
+		content:"";
+		position:absolute;
+		top:25px;
+		bottom:4px;
+		left:25px;
+		right:14px;
+		z-index:-1;
+		-webkit-transform: skewX(-15deg) rotate(-4deg) ;
+		-moz-transform: skewX(-15deg) rotate(-4deg) ;
+		-ms-transform: skewX(-15deg) rotate(-4deg) ;
+		-o-transform: skewX(-15deg) rotate(-4deg) ;
+		transform: skewX(-15deg) rotate(-4deg) ;
+		
+		-webkit-box-shadow: 2px 2px 10px #000 ;
+		-moz-box-shadow: 2px 2px 10px #000 ;
+		-ms-box-shadow: 2px 2px 10px #000 ;
+		-o-box-shadow: 2px 2px 10px #000 ;
+		box-shadow: 2px 2px 10px #000 ;
+	}
+	.cutesd li:before{
+		content:"";
+		position: absolute;
+		top:25px;
+		bottom:4px;
+		left:14px;
+		right:25px;
+		z-index:-1;
+		-webkit-transform: skewX(15deg) rotate(4deg);
+		-moz-transform: skewX(15deg) rotate(4deg);
+		-ms-transform: skewX(15deg) rotate(4deg);
+		-o-transform: skewX(15deg) rotate(4deg);
+		transform: skewX(15deg) rotate(4deg);
+		-webkit-box-shadow: -1px 2px 10px #000 ;
+		-moz-box-shadow: -1px 2px 10px #000 ;
+		-ms-box-shadow: -1px 2px 10px #000 ;
+		-o-box-shadow: -1px 2px 10px #000 ;
+		box-shadow: -1px 2px 10px #000 ;
+		
+	}
+
+	</style>
+</head>
+<body>
+	<div class="myimg shadow">
+		CSS3曲线阴影
+	</div>
+	<ul class="showmore cutesd">
+		<li><img src="./img/blackhorse.jpg" alt=""></li>
+		<li><img src="./img/blackhorse.jpg" alt=""></li>
+		<li><img src="./img/blackhorse.jpg" alt=""></li>
+	</ul>
+</body>
+</html>

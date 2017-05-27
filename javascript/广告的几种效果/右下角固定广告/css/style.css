@@ -1,0 +1,37 @@
+.main{
+	width:1200px;
+	height:2787px;
+	margin:0 auto;
+}
+#showAd{
+	width:280px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	font-size:24px;
+	color:white;
+	background:orange;
+	position:fixed;
+	right:0;
+	bottom:0;
+	z-index:10000;
+	cursor:pointer;
+}
+#wrapAd{
+	width:400px;
+	height:300px;
+	position:fixed;
+	right:0;
+	bottom:0;
+	cursor:pointer;
+	display:none;
+}
+#closeBtn{
+	width:25px;
+	height:25px;
+	background:url(../img/icon.jpg) no-repeat -100px -40px;
+	position:absolute;
+	top:5px;
+	right:5px;
+	cursor:pointer;
+}

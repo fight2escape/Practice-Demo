@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery插件validation</title>
+	<style type="text/css">
+		label.error{
+			margin-left:10px;
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<form id="demoForm">
+	<fieldset>
+	<legend>用户登录</legend>
+		<p>
+			<label for="username">username:</label>
+			<input type="text" id="username" name="username"/>
+		</p>
+		<p>
+			<label for="password">password:</label>
+			<input type="password" id="password" name="password" />
+		</p>
+		<p>
+			<label for="conf-password">comf-password:</label>
+			<input type="password" id="conf-password" name="conf-password" />
+		</p>
+		<p>
+			<input type="submit" value="登陆" name="submit" />
+		</p>
+	</fieldset>
+	</form>
+	<script type="text/javascript" src="../jquery-1.10.0.js"></script>
+	<script type="text/javascript" src="../jquery.validate.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#demoForm").validate({
+				//debug:true,
+				rules:{
+					username:{
+						required:true,
+						//minlength:2,
+						//maxlength:10,
+						//rangelength:[2,10],
+						//min:2,
+						//max:10,
+						//range:[2,10],
+						//email:true,
+						//dateISO:true,
+						//number:true,
+						//digits:true,
+						remote:{
+							url:"remote.php",
+							type:"post",
+							data:{
+								loginTime:function(){
+									return new Date;
+								}
+							}
+						}
+					},
+					password:{
+						required:true,
+						minlength:2,
+						maxlength:16
+					},
+					"conf-password":{
+						//required:true,
+						//length:[2,16],
+						equalTo:"#password"
+					}
+				},
+				messages:{
+					username:{
+						required:"必须填写用户名",
+						minlength:"不能少于2位",
+						maxlength:"不能大于10位",
+						rangelength:"字数在2到10位",
+						min:"不能小于2",
+						max:"不能大于10",
+						range:"需要大于2且小于10",
+						remote:"用户名不存在"
+					},
+					password:{
+						required:"必须填写密码",
+						minlength:"不能少于2位",
+						maxlength:"不能多于16位"
+					},
+					"conf-password":{
+						equalTo:"两次输入密码不一致",
+					}
+				}
+			});
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒计时</title>
+</head>
+<script type="text/javascript">
+window.onload = showTime;
+
+function showTime(){
+	setInterval(getTime,500);
+	setInterval(function(){
+		getRestDays('2017,6,7,11:0:1')
+	},75);
+}
+
+function getTime(){
+	var otime = new Date();
+	var year = otime.getFullYear();
+	var month = otime.getMonth()+1;
+	var date = otime.getDate();
+	var weekday = new Array();
+	weekday[0] = '星期日';
+	weekday[1] = '星期一';
+	weekday[2] = '星期二';
+	weekday[3] = '星期三';
+	weekday[4] = '星期四';
+	weekday[5] = '星期五';
+	weekday[6] = '星期六';
+	var day = weekday[otime.getDay()];
+	var h = otime.getHours();
+	var m = checkTime(otime.getMinutes());
+	var s = checkTime(otime.getSeconds());
+	var time = document.getElementById('time');
+	time.innerHTML = year +'年'+ month +'月'+ date +'日 '+ day +' '+ h +':'+ m +':'+ s; 
+	console.log(time.innerHTML);
+}
+function checkTime(time){
+	if(time<10){
+		time = '0'+time;
+	}
+	return time;
+}
+function getRestDays(day){
+	var date = new Date();
+	var blong = new Date(day);
+	var rest = blong.getTime() - date.getTime();
+	//一一减去相应的天数、小时、分钟、秒数
+	// var count = rest;
+	// var rDays = Math.floor(count/(24*60*60*1000));
+	// count -= rDays*(24*60*60*1000);
+	// var rh = Math.floor(count/(60*60*1000));
+	// count -= rh*(60*60*1000);
+	// var rm = Math.floor(count/(60*1000));
+	// count -= rm*(60*1000);
+	// var rs = Math.floor(count/1000);
+	// count -= rs*(1000);
+	// var rmm = Math.floor(count/10);
+
+	// 采用取模快速计算
+	var rDays = parseInt(rest/(24*60*60*1000))%365;
+	var rh = parseInt(rest/(60*60*1000))%24;
+	var rm = parseInt(rest/(60*1000))%60;
+	var rs = parseInt(rest/(1000))%60;
+	var rmm = parseInt(rest%100);
+	document.getElementById('days').innerHTML = rDays +'天'+ rh +'小时'+ rm +'分钟'+ rs +'秒'+ rmm;
+}
+</script>
+<body>
+	<div id="time"></div>
+	<div>距离高考还有： <span id="days"></span></div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.working{
+			width:300px;
+			height:300px;
+			background-color:red;
+			border:10px solid blue;
+			font-size:12px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload =function(){
+			var start = document.getElementById('start');
+			var stop = document.getElementById('stop');
+			start.onclick = working;
+			stop.onclick = function(){
+				clearInterval(timer);
+			}
+		}
+		
+		var timer = null;
+		function working(){
+			var work = document.getElementsByClassName('working')[0];
+			timer = setInterval(function(){
+				console.log(work.offsetWidth);
+				work.style.width = parseInt(getStyle(work,'width'))-1 +'px';
+				work.style.fontSize = parseInt(getStyle(work,'font-size'))+1 +'px';
+			},50);
+		}
+		function getStyle(obj,attr){
+			if(obj.currentStyle){
+				return obj.currentStyle[attr];
+			}else{
+				return getComputedStyle(obj,false)[attr];
+			}
+		}
+	</script>
+</head>
+<body>
+	
+<div class="working">font-size</div>
+<input type="button" id="start" value="start">
+<input type="button" id="stop" value="stop">
+</body>
+</html>

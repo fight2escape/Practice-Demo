@@ -1,0 +1,15 @@
+#wrap{
+	height:477px;
+	margin:0 auto;
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	position:relative;
+	overflow:hidden;
+}
+
+#wrap img{
+	border:1px solid #ccc;
+	position:absolute;
+	left:0;
+	display:block;
+}

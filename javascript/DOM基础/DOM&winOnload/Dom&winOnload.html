@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+ 	<meta http-equiv="Content-Type" Content="text/html; charset=utf-8"/>
+	<title>Dom and winOnload</title>
+	<script src="domReady.js" ></script>
+</head>
+<body>
+	<div id="showMsg"></div>
+	<div id="image">
+		<img src="1.jpg" title="1" alt="1"  />
+		<img src="2.jpg" title="2" alt="2"  />
+		<img src="3.jpg" title="3" alt="3"  />
+		<img src="4.jpg" title="4" alt="4"  />
+		<img src="5.jpg" title="5" alt="5"  />
+		<img src="6.jpg" title="6" alt="6"  />
+	</div>
+	<script>
+		var msgBox = document.getElementById("showMsg");
+		var imgs = document.getElementsByTagName("img");
+		var time1 = null, time2 = null;	
+		myReady(function(){
+			msgBox.innerHTML += "DomReady已经加载完成。<br />";
+			time1 = new Date().getTime();
+			msgBox.innerHTML += "时间戳" +　time1 + "<br>";
+		});
+		window.onload = function(){
+			msgBox.innerHTML += "window.onload已经加载完成。<br />";
+			time2 = new Date().getTime();
+			msgBox.innerHTML += "时间戳" + time2 + "<br />";
+			msgBox.innerHTML += "DomReady比window.onload快：" + (time2 - time1) +"ms<br />";
+		};
+	</script>
+</body>
+</html>

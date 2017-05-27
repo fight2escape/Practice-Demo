@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width" initial-scale="1"/>
+	<title>Tooltip</title>
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<style type="text/css">
+	*{
+		margin:0;
+		padding: 0;
+	}
+	html{
+		text-size-adjust:none;
+		-o-text-size-adjust:none;
+		-ms-text-size-adjust:none;
+		-moz-text-size-adjust:none;
+		-webkit-text-size-adjust:none;
+	}
+	body{
+		background: url(img/blackhorse.jpg);
+		background-position: center top;
+		background-size:cover;
+	}
+	nav{
+		width: 600px;
+		height: 200px;
+		margin:300px auto;
+	}
+	ul{
+		list-style:none;
+	}
+	ul a {
+		text-decoration:none;
+		color:rgba(255,255,255,0.4);
+		font-size:30px;
+		font-weight: 700;
+		float:left;
+		margin:50px 15px;
+		position:relative;
+	}
+
+
+	/*悬浮图标过度动画，透明度初始化*/
+	.mynav{
+		-webkit-transition: all .2s ease-in;
+		-moz-transition: all .2s ease-in;
+		-ms-transition: all .2s ease-in;
+		-o-transition: all .2s ease-in;
+		transition: all .2s ease-in;
+		opacity:0;
+		filter:alpha(opacity:0);
+	}
+	/*滑过整个A标签时，显示图标*/
+	a:hover .mynav{
+		opacity:1;
+		filter:alpha(opacity:100);
+	}
+	a:hover{
+		color:rgba(255,255,255,1);
+	}
+	/*圆形图标样式*/
+	.mynav::before{
+		content:"";
+		width: 80px;
+		height: 80px;
+		-webkit-border-radius: 50% ;
+		-moz-border-radius: 50% ;
+		-ms-border-radius: 50% ;
+		-o-border-radius: 50% ;
+		border-radius: 50% ;
+		background-color: white;
+		position:absolute;
+		bottom:100%;
+		left:50%;
+		-webkit-transform: translate3d(-50%,0,0);
+		-moz-transform: translate3d(-50%,0,0);
+		-ms-transform: translate3d(-50%,0,0);
+		-o-transform: translate3d(-50%,0,0);
+		transform: translate3d(-50%,0,0);
+		border-bottom:8px solid orange;
+		box-sizing:border-box;
+	}
+	/*内部小图标*/
+	.mynav i{
+		color:orange;
+		position:absolute;
+		left:50%;
+		bottom:100%;
+		-webkit-transform: translate3d(-50%,-80%,0);
+		-moz-transform: translate3d(-50%,-80%,0);
+		-ms-transform: translate3d(-50%,-80%,0);
+		-o-transform: translate3d(-50%,-80%,0);
+		transform: translate3d(-50%,-80%,0);
+		-webkit-transition: all .3s ease-in;
+		-moz-transition: all .3s ease-in;
+		-ms-transition: all .3s ease-in;
+		-o-transition: all .3s ease-in;
+		transition: all .3s ease-in;
+	}
+
+	/*HOME*/
+	#nav1 li{
+		-webkit-transform: rotate3d(0,0,1,90deg);
+		-moz-transform: rotate3d(0,0,1,90deg);
+		-ms-transform: rotate3d(0,0,1,90deg);
+		-o-transform: rotate3d(0,0,1,90deg);
+		transform: rotate3d(0,0,1,90deg);
+	}
+	#nav1:hover li{
+		-webkit-transform: translate3d(0,-20px,0) rotate3d(0,0,1,0deg);
+		-moz-transform: translate3d(0,-20px,0) rotate3d(0,0,1,0deg);
+		-ms-transform: translate3d(0,-20px,0) rotate3d(0,0,1,0deg);
+		-o-transform: translate3d(0,-20px,0) rotate3d(0,0,1,0deg);
+		transform: translate3d(0,-20px,0) rotate3d(0,0,1,0deg);
+	}
+
+
+	/*ARTICLE*/
+	#nav2 li{
+		-webkit-transform: translate3d(0,40px,0);
+		-moz-transform: translate3d(0,40px,0);
+		-ms-transform: translate3d(0,40px,0);
+		-o-transform: translate3d(0,40px,0);
+		transform: translate3d(0,40px,0);
+	}
+	#nav2:hover li{
+		-webkit-transform: translate3d(0,-10px,0);
+		-moz-transform: translate3d(0,-10px,0);
+		-ms-transform: translate3d(0,-10px,0);
+		-o-transform: translate3d(0,-10px,0);
+		transform: translate3d(0,-10px,0);
+	}
+	#nav2 i{
+		-webkit-transform: translate3d(-50%,20%,0);
+		-moz-transform: translate3d(-50%,20%,0);
+		-ms-transform: translate3d(-50%,20%,0);
+		-o-transform: translate3d(-50%,20%,0);
+		transform: translate3d(-50%,20%,0);
+	}
+	#nav2:hover i{
+		-webkit-transform: translate3d(-50%,-80%,0);
+		-moz-transform: translate3d(-50%,-80%,0);
+		-ms-transform: translate3d(-50%,-80%,0);
+		-o-transform: translate3d(-50%,-80%,0);
+		transform: translate3d(-50%,-80%,0);
+	}
+
+
+	/*Gallery*/
+	#nav3 li{
+		-webkit-transform: translate3d(0,-90px,0) scale(0);
+		-moz-transform: translate3d(0,-90px,0) scale(0);
+		-ms-transform: translate3d(0,-90px,0) scale(0);
+		-o-transform: translate3d(0,-90px,0) scale(0);
+		transform: translate3d(0,-90px,0) scale(0);
+	}
+	#nav3 i{
+		-webkit-transform: translate3d(-50%,-80%,0) scale(0);
+		-moz-transform: translate3d(-50%,-80%,0) scale(0);
+		-ms-transform: translate3d(-50%,-80%,0) scale(0);
+		-o-transform: translate3d(-50%,-80%,0) scale(0);
+		transform: translate3d(-50%,-80%,0) scale(0);
+	}
+	#nav3:hover li{
+		-webkit-transform: translate3d(0,-10px,0) scale(1);
+		-moz-transform: translate3d(0,-10px,0) scale(1);
+		-ms-transform: translate3d(0,-10px,0) scale(1);
+		-o-transform: translate3d(0,-10px,0) scale(1);
+		transform: translate3d(0,-10px,0) scale(1);
+		
+	}
+	#nav3:hover i{
+		-webkit-transform: translate3d(-50%,-80%,0) scale(1);
+		-moz-transform: translate3d(-50%,-80%,0) scale(1);
+		-ms-transform: translate3d(-50%,-80%,0) scale(1);
+		-o-transform: translate3d(-50%,-80%,0) scale(1);
+		transform: translate3d(-50%,-80%,0) scale(1);
+		
+	}
+	/*Music*/
+	#nav4 li{
+		-webkit-transform: translate3d(0,20px,0) rotate3d(0,1,0,90deg);
+		-moz-transform: translate3d(0,20px,0) rotate3d(0,1,0,90deg);
+		-ms-transform: translate3d(0,20px,0) rotate3d(0,1,0,90deg);
+		-o-transform: translate3d(0,20px,0) rotate3d(0,1,0,90deg);
+		transform: translate3d(0,20px,0) rotate3d(0,1,0,90deg);
+	}
+	#nav4:hover li{
+		-webkit-transform: translate3d(0,-20px,0) rotate3d(0,1,0,0deg);
+		-moz-transform: translate3d(0,-20px,0) rotate3d(0,1,0,0deg);
+		-ms-transform: translate3d(0,-20px,0) rotate3d(0,1,0,0deg);
+		-o-transform: translate3d(0,-20px,0) rotate3d(0,1,0,0deg);
+		transform: translate3d(0,-20px,0) rotate3d(0,1,0,0deg);
+	}
+	/*About*/
+	#nav5 li{
+		-webkit-transform: translate3d(0,80px,0) rotate(360deg);
+		-moz-transform: translate3d(0,80px,0) rotate(360deg);
+		-ms-transform: translate3d(0,80px,0) rotate(360deg);
+		-o-transform: translate3d(0,80px,0) rotate(360deg);
+		transform: translate3d(0,80px,0) rotate(360deg);
+		-webkit-transition: all .5s ease-in;
+		-moz-transition: all .5s ease-in;
+		-ms-transition: all .5s ease-in;
+		-o-transition: all .5s ease-in;
+		transition: all .5s ease-in;
+		
+	}
+	#nav5:hover li{
+		-webkit-transform: translate3d(0,-50px,0) rotate(0deg);
+		-moz-transform: translate3d(0,-50px,0) rotate(0deg);
+		-ms-transform: translate3d(0,-50px,0) rotate(0deg);
+		-o-transform: translate3d(0,-50px,0) rotate(0deg);
+		transform: translate3d(0,-50px,0) rotate(0deg);
+		
+	}
+	</style>
+</head>
+<body>
+	<nav>
+		<ul>
+			<a href="#"  id="nav1">
+				<li class="mynav"><i class="fa fa-envira"></i></li>Home
+			</a>
+			<a href="#"  id="nav2">
+				<li class="mynav"><i class="fa fa-battery-0"></i></li>Article
+			</a>
+			<a href="#"  id="nav3">
+				<li class="mynav"><i class="fa fa-ban"></i></li>Gallery
+			</a>
+			<a href="#"  id="nav4">
+				<li class="mynav"><i class="fa fa-at"></i></li>Music
+			</a>
+			<a href="#"  id="nav5">
+				<li class="mynav"><i class="fa fa-beer"></i></li>About
+			</a>
+		</ul>
+	</nav>
+</body>
+</html>

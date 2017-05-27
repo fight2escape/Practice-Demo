@@ -1,0 +1,54 @@
+﻿/*文件保存编码改成UTF-8 with BOM*/
+
+
+/*This is just a test*/
+
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+}
+
+.box {
+    @include border-radius(7px);
+}
+
+
+/*带有参数的宏定义*/
+
+@mixin border-radius($radius:3px) {
+    -webkit-border-radius: $radius;
+    border-radius: $radius;
+}
+
+.box {
+    @include border-radius;
+}
+
+.box1 {
+    @include border-radius(4px);
+}
+
+
+/*多参数的宏*/
+
+@mixin size($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+.box {
+    @include size(200px, 300px);
+}
+
+
+/*占位符*/
+
+%pm50 {
+    padding-bottom: 50px;
+}
+
+.box {
+    @extend %pm50;
+}
+
+//没事，这个注释看不见

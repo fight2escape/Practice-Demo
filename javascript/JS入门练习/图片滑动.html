@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" Content="text/html; charset=utf-8" />
+	<title>图片滑动</title>
+</head>
+<body>
+<img src="http://img.mukewang.com/53577ee900016c2102080260.jpg" id="myImage" style="position:absolute; top:0; left:0;" />
+<br />
+<input type="button" id="btn" value="向右下滑动100px" style="margin-top:500px;" />
+<input type="button" id="lbtn" value="向左上滑动100px" sytle="margin-top:500px;" />
+</body>
+<script type="text/javascript">
+window.onload = function(){
+	var img = document.getElementById("myImage");
+	var btn = document.getElementById("btn");
+	var lbtn = document.getElementById("lbtn");
+	btn.onclick = function(){
+		slideImg();
+	}	
+	lbtn.onclick = function(){
+		slideLeft();
+	}
+	var maxLeft = parseInt(img.style.left) +400;
+
+	function slideImg () {
+		var endLeft = parseInt(img.style.left) + 100;
+		var slideTimer = setInterval(function(){
+			var imgLeft = parseInt(img.style.left);
+			var imgTop = parseInt(img.style.top);
+			if(imgLeft < endLeft){
+				if(imgLeft < maxLeft){
+					imgLeft += 5;
+					imgTop += 5;
+					img.style.left = imgLeft + "px";
+					img.style.top = imgTop + "px";
+				}else{
+					alert("已经滑到极限");
+					clearInterval(slideTimer);
+				}
+			}else{
+				clearInterval(slideTimer);
+			}
+		},20);	
+	}
+	function slideLeft () {
+		var endLeft = parseInt(img.style.left)-100;
+		var imgLeft = parseInt(img.style.left);
+		var imgTop = parseInt(img.style.top);
+		var rightTimer = setInterval(function(){
+			if(imgLeft > endLeft){
+				if(imgLeft > 0){
+					imgLeft -= 5;
+					imgTop -=5;
+					img.style.left = imgLeft + "px";
+					img.style.top = imgTop + "px";
+				}else{
+					alert("亲爱的不能再过去啦");
+					clearInterval(rightTimer);
+				}
+			}else{
+			clearInterval(rightTimer);
+			}
+		},20);
+	}
+}
+</script>
+</html>

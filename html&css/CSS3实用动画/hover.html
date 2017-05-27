@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title>hover</title>
+	<style type="text/css">
+	.mycard{
+		position:relative;
+		text-decoration:none;
+		border-radius:50%;
+	}
+	.showimg,.mask,.border{
+		width:300px;
+		height:300px;
+		position:absolute;
+		border-radius:50%;
+	}
+	.showimg{
+		background-image:url(./img/blackhorse.jpg);
+		background-size:cover;
+		background-position:50% 50%;
+	}
+	.mask{
+		text-align:center;
+		background-color: rgba(0,0,0,0);
+		transition:all .5s ease-in .1s;
+
+	}
+	.info{
+		color:rgba(255,255,255,0);
+		font-size:24px;
+		margin-top:50%;
+		transform:translateY(-50%);
+		transition:all .5s ease-in .1s;
+
+	}
+	.border{
+		border:10px solid #072256;
+		border-left-color:#e07514;
+		border-top-color:#e07513;
+		box-sizing:border-box;
+		transition:all .5s ease-in .1s;
+
+	}
+	.mycard:hover .mask{
+		background-color: rgba(0,0,0,0.5);
+	}
+	.mycard:hover .info{
+		color:rgba(255,255,255,1);
+	}
+	.mycard:hover .border{
+		transform:rotate(180deg);
+	}
+	</style>
+</head>
+<body>
+
+<a href="#" class="mycard" >
+	<div class="showimg"></div>
+	<div class="mask">
+		<div class="info">
+			<h3>a nice day</h3>
+			<p>just do it!just do it!</p>
+		</div>
+	</div>
+	<div class="border"></div>
+</a>
+
+
+</body>
+</html>

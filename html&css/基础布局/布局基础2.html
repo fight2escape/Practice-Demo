@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>float布局</title>
+<style type="text/css">
+*{margin:0; padding:0;	}
+.wrap{margin:0 auto; width:960px; background-color:#000;	}
+.header{ height:30px; background-color:#ff0; 	}
+.mainbody{ height:800px; background-color:#f0f;	text-align:center; font-size:50px;}
+.left{width:700px; height:95%; background-color:#a00; float:left;	margin:10px 15px;}
+.lefttip{width:97%; height:30%; background-color:#0aa; margin:6px 10px; text-align:left; line-height:114px;}
+.right{width:200px; height:95%; line-height:95%;  background-color:#0a0;	float:right; margin:10px 15px; display:table-cell; vertical-align:middle;}
+.footer{ height:20px; background-color:#0ff;	}
+
+</style>
+</head>
+
+<body>
+<div class="wrap">
+	<div class="header">HEADER</div>
+    <div class="mainbody">
+            <div class="left">
+                <div class="lefttip">ltop</div>
+                <div class="lefttip">lsec</div>
+                <div class="lefttip">leth</div>
+            </div> 
+        <div class="right">RIGHT</div>
+    </div>
+    <div class="footer">FOOTER</div>
+</div>
+</body>
+</html>

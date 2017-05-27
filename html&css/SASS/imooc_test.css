@@ -1,0 +1,31 @@
+@charset "UTF-8";
+/*文件保存编码改成UTF-8 with BOM*/
+/*This is just a test*/
+.box {
+  -webkit-border-radius: 7px;
+  border-radius: 7px;
+}
+
+/*带有参数的宏定义*/
+.box {
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.box1 {
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+}
+
+/*多参数的宏*/
+.box {
+  width: 200px;
+  height: 300px;
+}
+
+/*占位符*/
+.box {
+  padding-bottom: 50px;
+}
+
+/*# sourceMappingURL=imooc_test.css.map */

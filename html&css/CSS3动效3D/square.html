@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>Square</title>
+ 	<style type="text/css">
+ 	.myshow{
+ 		perspective:800;
+ 		-webkit-perspective:800;
+ 		perspective-origin:center center;
+ 		-webkit-perspective-origin:center center;
+ 		transform-style:preserve-3d;
+ 		-webkit-transform-style:preserve-3d;
+ 		width: 400px;
+ 		height: 400px;
+ 		margin:50px auto;
+ 	}
+	.area{
+		width: 300px;
+		height: 300px;
+		background-color: #000;
+		line-height: 300px;
+		text-align:center;
+		font-size:300px;
+		font-weight:bold;
+		color:white;
+		position:absolute;
+		z-index:1;
+	}
+	#item1{
+		z-index:5;
+	}
+	#item2{
+		transform-origin:top;
+		transform:rotateX(90deg);
+	}
+	#item3{
+		transform-origin:left;
+		transform:rotateY(-90deg);
+	}
+	#item4{
+		transform-origin:right;
+		transform:rotateY(90deg);
+	}
+	#item5{
+		transform-origin:bottom;
+		transform:rotateX(-90deg);
+	}
+
+
+ 	</style>
+ </head>
+ <body>
+ 	<div class="myshow">
+ 		<div class="area" id="item1">1</div>
+ 		<div class="area" id="item2">2</div>
+ 		<div class="area" id="item3">3</div>
+ 		<div class="area" id="item4">4</div>
+ 		<div class="area" id="item5">5</div>
+ 		<div class="area" id="item6">6</div>
+ 	</div>
+ </body>
+ </html> 

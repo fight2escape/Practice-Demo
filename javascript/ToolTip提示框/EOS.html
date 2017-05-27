@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>ToolTip效果</title>
+    <style>
+        body {
+            font-size: 18px;
+            line-height: 1.8;
+            font-family: "Microsoft YaHei", "微软雅黑";
+        }
+
+        #demo {
+            width: 500px;
+            margin: 30px auto;
+            padding: 20px 30px;
+            position: relative;
+            background-color: #fff;
+        }
+
+        #demo h2 {
+            color: #03F;
+        }
+
+        #demo .tooltip {
+            color: #03F;
+            cursor: help;
+        }
+        .ttpbox{
+            position:absolute;
+            display:block;
+            padding:10px;
+            border:1px solid black;
+            border-radius:5px;
+            box-shadow:0 0 0 5px;
+            overflow:auto;
+        }
+
+      
+    </style>
+</head>
+
+<body>
+<div id="demo">
+    <p><a class="tooltip" id="tooltip1">慕课网</a>的使命是传播互联网最前沿技术，帮助更多的人实现梦想！在慕课网前端开发、
+        <a class="tooltip" id="tooltip2">Android</a>开发、<a class="tooltip" id="tooltip3">iOS</a>开发等课程统统有，你还在等什么，赶紧来学习吧。
+    </p>
+</div>
+<script type="text/javascript">
+var getEle = function(id){
+    return document.getElementById(id);
+}
+var ttpboxClass = 'ttpbox';
+var demo = getEle('demo');
+function addEvent (ele,type,hander) {
+    if(ele.addEventListener){
+        ele.addEventListener(type,hander,false);
+    }else if(ele.attach){
+        ele.attachEvent('on'+type,hander);
+    }
+}
+function showTooltip (obj,id,html,width,height) {
+    if(!getEle(id)){
+        var tooltipbox = document.createElement('div');
+        tooltipbox.className = ttpboxClass;
+        tooltipbox.id = id;
+        tooltipbox.innerHTML = html;
+        tooltipbox.style.width = width? width +'px':'auto';
+        tooltipbox.style.height = height? height +'px':'auto';
+        obj.appendChild(tooltipbox);
+
+        var left = obj.offsetLeft;
+        var top  = obj.offsetTop + 28;
+        var mwid = tooltipbox.offsetWidth;
+        var cwid = document.documentElement.clientWidth || document.body.clientWidth;
+        var chgt = document.documentElement.clientHeight || document.body.clientHeight;
+        var demowid = demo.offsetLeft;
+        console.log(top +"//"+ chgt);
+        if((demowid+left+mwid)>cwid){
+            left = cwid - mwid - demowid;
+            if(left<0){left = 0;}
+        }
+        tooltipbox.style.left = left +'px';
+        tooltipbox.style.top  = top  +'px';
+
+        addEvent(obj,'mouseleave',function(){
+            setTimeout(function(){
+                tooltipbox.style.display = 'none';
+            },200);
+        });
+    }else{
+        getEle(id).style.display = 'block';
+        addEvent(obj,'mouseleave',function(){
+            setTimeout(function(){
+                getEle(id).style.display = 'none';
+            },200);
+        });
+    }
+}
+addEvent(demo,'mouseover',function(e){
+    var event = e || window.event;
+    var target = event.target || event.srcElement;
+    if(target.className == 'tooltip'){
+        var _html;
+        var _id;
+        var _width;
+
+        switch(target.id){
+            case 'tooltip1':
+                _id = 't1';
+                _html = '<iframe src="http://www.imooc.com/ " width="900px" height="500px" ></iframe>';
+                _width = 500;
+                break;
+            case 'tooltip2':
+                _id = 't2';
+                _html = '<iframe src="http://baike.baidu.com/link?url=MINIchheFEp0hM4rMpY0Fw13-j8SP_vQfWhi4UEqKJOpL1SQ3occqmsE1gu2UIL8fdwh8i675amHa4UB0UhDK_" width="900px" height="470px" ></iframe>';
+            
+                break;
+            case 'tooltip3':
+                _id = 't3';
+                _html = '<iframe src="http://baike.baidu.com/link?url=hQLS5bhsHDFe12IJ_t079q7SikCsAx-lF67qwHxHng6ERsO2ooomTXW8N4_Nikv5neZxG2yEV0Xix4BjRzdOPk81ZyqpCi3mNqV2oUagaDK" width="900px" height="470px" ></iframe>';
+                break;
+            default:
+                return false;
+        }
+        showTooltip(target,_id,_html,_width);
+    }
+});
+
+</script>
+</body>
+</html>

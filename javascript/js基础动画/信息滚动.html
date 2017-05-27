@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>信息滚动</title>
+	<style type="text/css">
+		.wrap{
+			width:350px;
+			border:4px solid #666;
+			border-radius:20px;
+			margin:0 auto;
+			margin-top:100px;
+		}
+		.header{
+		
+			height:50px;
+			line-height:50px;
+			padding-left:25px;
+			font-size:20px;
+			font-weight:bold;
+			color:white;
+			background-color:#E53B19;
+			border-radius:16px 16px 0 0;
+		}
+		.header span{
+			float:right;
+			margin-right:10px;
+			margin-top:10px;
+			cursor:pointer;
+			font-size:15px;
+		}
+		.main{
+			width:100%;
+			height:96px;
+			font-weight:bold;
+			overflow:hidden;
+			font-size:16px;
+		}
+		.main ol{
+			margin:0;
+		}
+		.main li{
+			/*margin:5px;*/
+			height:24px;
+			letter-spacing:1px;
+			cursor:pointer;
+		}
+		.main span{
+			float:right;
+			margin-right:10px;
+			color:#666;
+		}
+	</style>
+</head>
+<body>
+<script type="text/javascript">
+window.onload = startMove;
+
+var timer = null;
+var timeout = null;
+function startMove(){
+	var main = document.getElementById('main');
+	// timer = setInterval(scrollUp,50);
+	timeout = setTimeout("start()",2000);
+	main.onmouseover = function(){
+		clearInterval(timer);
+	}
+	main.onmouseout = function(){
+		start();
+	};
+}
+// function scrollUp(){
+// 	//给要滚动的元素的父级元素设置scrollTop
+// 	var main = document.getElementById('main');
+// 	var one = document.getElementById('one');
+// 	main.scrollTop++;
+// 	if(main.scrollTop >= one.offsetHeight){
+// 		main.scrollTop = 0;
+// 	}
+// 	// console.log(main.scrollTop);
+// 	// console.log(one.offsetTop);
+// 	// console.log(document.getElementById('one').offsetHeight);
+// }
+function start(){
+	//此处有坑，若不先清除timeout，则网页会发疯
+	clearTimeout(timeout);
+	timer = setInterval(function(){
+		scrollUp();
+	},50);
+}
+function scrollUp(){
+	var main = document.getElementById('main');
+	var one = document.getElementById('one');
+	main.scrollTop++;
+	if(main.scrollTop >= one.offsetHeight){
+		main.scrollTop = 0;
+	}
+	if(main.scrollTop%48 == 0){
+		clearInterval(timer);
+		timeout = setTimeout(function(){
+			start();
+		},2000);
+	}
+}
+</script>
+	<div class="wrap">
+		<div class="header">
+			慕课网最新课程
+			<span>more&gt;&gt;</span>
+		</div>
+		<div class="main" id="main">
+			<ol id="one">
+				<li>CSS3从入门到放弃<span>2016-10-5</span></li>
+				<li>CSS3从入门到放弃<span>2016-10-5</span></li>
+				<li>CSS3从入门到放弃<span>2016-10-5</span></li>
+				<li>CSS3从入门到放弃<span>2016-10-5</span></li>
+				<li>CSS3从入门到放弃<span>2016-10-5</span></li>
+				<li>CSS3从入门到放弃<span>2016-10-5</span></li>
+				
+			</ol>
+			<ol id="copy">
+				<li>CSS3从入门到放弃<span>2016-10-5</span></li>
+				<li>CSS3从入门到放弃<span>2016-10-5</span></li>
+				<li>CSS3从入门到放弃<span>2016-10-5</span></li>
+				<li>CSS3从入门到放弃<span>2016-10-5</span></li>
+				<li>CSS3从入门到放弃<span>2016-10-5</span></li>
+				<li>CSS3从入门到放弃<span>2016-10-5</span></li>
+				
+			</ol>
+		</div>
+	</div>		
+</body>
+</html>

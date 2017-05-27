@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		.test{
+			width:300px;
+			height:200px;
+			position:fixed;
+			top:30px;
+			left:-250px;
+		}
+		.big,.small{
+			display:inline-block;
+			float:left;
+		}
+		.big{
+			width:250px;
+			height:100%;
+			background-color:red;
+		}
+		.small{
+			width:30px;
+			height:80px;
+			background-color: blue;
+			margin-top:70px;
+			text-align:center;
+			color:white;
+			cursor:pointer;
+		}
+
+	</style>
+</head>
+<body>
+<script type="text/javascript">
+//等都加载完后才执行
+window.onload = function(){
+	var otest = document.getElementById('test');
+	otest.onmouseover = function(){
+		showPic(50);
+		changeOpacity(30,100,10);
+	}
+	otest.onmouseout = function(){
+		changeOpacity(100,30,10);
+		showPic(-50);
+	}
+}
+var time = null;
+var timer = null;
+function showPic(oSpeed,fn){
+	//先清除之前的定时任务
+	clearInterval(time);
+	var otest = document.getElementById('test');
+	var left = 0;
+	time = setInterval(function(){
+		//获取元素的左边距
+		left = otest.offsetLeft;
+		//弹出
+		if(oSpeed>=0){
+			if(left>=0){
+				//大于零后停止
+				clearInterval(time);
+				if(fn){
+					fn();
+				}
+			}else{
+				//向大取整，当左边距很小的时候才有速读继续减小
+				oSpeed = Math.ceil(-otest.offsetLeft/7);
+				left += oSpeed;
+				if(left>0){left = 0;}
+				otest.style.left = left + 'px';
+			}
+		//弹回
+		}else{
+			if(left<= -250){
+				clearInterval(time);
+				if(fn){
+					fn();
+				}
+			}else{
+				//向小取整，因为是减小
+				oSpeed = Math.floor(otest.offsetLeft/10);
+				//一开始是0，不单独设置无法动弹
+				if(otest.offsetLeft==0){
+					oSpeed = -1;
+				}
+				left += oSpeed;
+				if(left<-250){left = -250;}
+				otest.style.left = left + 'px';
+			}
+		}
+	},30);
+}
+function changeOpacity(sta,s,sp,fn){
+	var start = sta;
+	var stop = s;
+	var speed = sp;
+	clearInterval(timer);
+	var obj = document.getElementById('big');
+	timer = setInterval(function(){
+		if(start < stop){
+			if(start >= stop){
+				clearInterval(timer);
+				if(fn){
+					fn();
+				}
+			}else{
+				start += speed;
+				if(start>stop){start = stop;}
+				obj.style.opacity = start/100;
+				obj.style.filter = "alpha(opacity:"+start+")";
+			}
+		}else{
+			if(start <= stop){
+				clearInterval(timer);
+				if(fn){
+					fn();
+				}
+			}else{
+				start -= speed;
+				if(start<stop){start = stop;}
+				obj.style.opacity = start/100;
+				obj.style.filter = "alpha(opacity:"+start+")";
+			}
+		}
+	},50);
+}
+</script>
+	<div class="test" id="test">
+		<span class="big" id="big"></span>
+		<span class="small" id="small">点我查看</span>
+	</div>
+</body>
+</html>

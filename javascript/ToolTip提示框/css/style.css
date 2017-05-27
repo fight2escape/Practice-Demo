@@ -1,0 +1,64 @@
+body{
+	margin:0;
+	padding:0;
+	background:url(../img/bg.jpg) no-repeat center top;
+	font-size:16px;
+	line-height:1.5em;
+}
+.main{
+	width:500px;
+	height:100%;
+	margin:30px auto;
+	padding:20px 30px;
+	background-color:#fff;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	box-shadow:0 0 0 10px rgba(0,0,0,0.2);
+	-moz-box-shadow:0 0 0 10px rgba(0,0,0,0.2);
+	-webkit-box-shadow:0 0 0 10px rgba(0,0,0,0.2);
+	position:relative;
+}
+.main h3{
+	font-size:24px;
+	color:blue;
+
+}
+.main a{
+	text-decoration:none;
+	color:blue;
+	cursor:help;
+}
+.ttpbox{
+	width:auto;
+	border:1px solid blue;
+	border-radius:5px;
+	padding:5px 10px;
+	background:white;
+	display:none;
+	position:absolute;
+	color:black;
+	font-size:14px;
+	font-family:'微软雅黑';
+}
+#pic img{
+	width:510px;
+	height:340px;
+}
+#mycont img{
+	width:100px;
+	height:100px;
+	padding:5px;
+	float:left;
+}
+#mycont p{
+	width:auto;
+	float:left;
+	padding:0 10px;
+}
+#mycont h3{
+	color:black!important;
+	float:left;
+	padding:0 10px;
+	
+}

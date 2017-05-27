@@ -1,0 +1,28 @@
+*{
+	margin:0;
+	padding:0;
+}
+.wrap{
+	width:962px;
+	margin:0 auto;
+}
+#topAd{
+	height:0;
+}
+#showAd{
+	width:962px;
+	position:relative;
+	display:none;
+}
+#curImg{
+	width:100%;
+}
+#close{
+	width:16px;
+	height:16px;
+	position:absolute;
+	top:5px;
+	right:5px;
+	background:url(../img/icon.jpg) no-repeat -370px -20px;
+	cursor:pointer;
+}

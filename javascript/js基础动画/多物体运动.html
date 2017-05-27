@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+<style type="text/css">
+	.mutp{
+		width:200px;
+		height:80px;
+		margin-top:30px;
+		background:blue;
+		filter:alpha(opacity:30);
+		opacity:0.3;
+	}
+</style>
+<script type="text/javascript">
+window.onload = function(){
+	var divs = document.getElementsByClassName('mutp');
+	for(var i=0; i<divs.length; i++){
+		divs[i].timer = null;
+		divs[i].timer2 = null;
+		divs[i].alpha1 = 30;
+		divs[i].alpha2 = 100;
+		divs[i].onmouseover = function(){
+			startMove(this,30);
+			startChange(this,10);
+		}
+		divs[i].onmouseout = function(){
+			startMove(this,-30);
+			startChange(this,-10);
+		}
+	}
+}
+//var timer = null;
+function startMove(obj,speed){
+	clearInterval(obj.timer);
+	var width = 0;
+	obj.timer = setInterval(function(){
+		width = obj.offsetWidth + speed;
+		if(speed<0 && width<200){
+			width = 200;
+			clearInterval(obj.timer);
+		}else{
+			if(width>400){
+				width = 400;
+				clearInterval(obj.timer);
+			}
+		}
+		obj.style.width = width + 'px';
+	},50);
+}
+var filter1 = 100;
+var filter2 = 30;
+function startChange(obj,speed){
+	clearInterval(obj.timer2);
+	obj.alpha1 = 30;
+	obj.alpha2 = 100;
+	obj.timer2 = setInterval(function(){
+		if(speed>0){
+			obj.alpha1 += speed;
+			if(obj.alpha1>=filter1){
+				obj.alpha1 = filter1;
+				clearInterval(obj.timer2);
+			}
+		}else{
+			obj.alpha2 += speed;
+			if(obj.alpha2<=filter2){
+				obj.alpha2 = filter2;
+				clearInterval(obj.timer2);
+			}
+		}
+		obj.style.opacity = obj.alpha1/100;
+		obj.style.filter = 'alpha(opacity:'+obj.alpha1+')';
+	},50);
+}
+</script>
+</head>
+<body>
+	
+	<div class="mutp"></div>
+	<div class="mutp"></div>
+	<div class="mutp"></div>
+	<div class="mutp"></div>
+
+</body>
+</html>

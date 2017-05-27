@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>nodeName-nodeValue</title>
+</head>
+<body>
+<!--This is a nodeName&nodeValue test-->
+<div id="contain">This is a Element Node.</div>
+<script type="text/javascript">
+var divNode = document.getElementById("contain");
+console.log(divNode.nodeName + '/' + divNode.nodeValue);
+var attrNode = divNode.attributes[0];
+console.log(attrNode.nodeName +  '/' + attrNode.nodeValue);
+var textNode = divNode.childNodes[0];
+console.log(textNode.nodeName + '/' + textNode.nodeValue);
+var commentNode = document.body.childNodes[1];
+console.log(commentNode.nodeName + '/' + commentNode.nodeValue);
+console.log(document.doctype.nodeName + '/' + document.doctype.nodeValue);
+var fragNode = document.createDocumentFragment();
+console.log(fragNode.nodeName + '/' + fragNode.nodeValue);
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>自动展开</title>
+    <style type="text/css">   /*设置广告和正文的CSS样式*/
+   *{
+        margin:0;
+        padding:0;
+   }
+   .demo{
+        width:1000px;
+        height:500px;
+        margin:0 auto;
+   }
+   .animation{
+        width:700px;
+        height:440px;
+        font-size:30px;
+        background:#ccc;
+        border:1px solid #aaa;
+        text-align:center;
+        line-height:440px;
+        box-shadow:0 0 0 1px;
+        border-radius:20px;
+        display:none;
+        margin:0 auto;
+   }
+   .static{
+    width:100%;
+    height:60px;
+    font-size:25px;
+    text-align:center;
+    line-height:60px;
+    border:1px solid #aaa;
+    border-radius:10px;
+    background:#999;
+    opacity:0.7;
+    filter:alpha(opacity=70);
+
+   }
+    </style>
+    <script type="text/javascript">
+       var width = 0;
+        //增加广告宽度函数
+        function addWidth () {
+            var anim = document.getElementById('animation');
+            anim.style.display = 'block';
+            //等宽度足够了再展开
+            if(width>170){
+                anim.innerHTML = "慕课网欢迎你";
+            }
+
+            if(width<700){
+                width += 5;
+                anim.style.width = width +'px';
+            }else{
+                setTimeout(subWidth,3000);
+                return;
+            }
+            setTimeout(addWidth,30);
+        }
+
+        //减少广告宽度函数
+        function subWidth () {
+            var anim = document.getElementById('animation');
+            //等宽度很小时，清空文字，增强用户体验
+            if(width<50){
+                anim.innerHTML = '';
+            }
+            if(width>0){
+                width -= 15;
+                anim.style.width = width +'px';
+            }else{
+                anim.style.display = 'none';
+                return;
+            }
+            setTimeout(subWidth,30);
+        }
+        //在网页加载完毕时，调用增加宽度函数，等待5秒钟后调用减少宽度函数。
+        window.onload =  function(){
+            addWidth();
+        };
+        
+        
+        
+        
+      
+    </script>
+</head>
+<body>
+    <!--广告和正文的HTML代码-->
+    <div class="demo">
+        <div class="animation" id="animation">
+            
+        </div>
+        <div class="static" >
+            好好看着别发呆
+        </div>
+    </div>
+    
+</body>
+</html>

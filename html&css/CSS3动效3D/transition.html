@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Transition</title>
+	<style type="text/css">
+		.trans{
+			width: 300px;
+			height: 200px;
+			background-color: blue;
+			margin: 0 auto;
+			transition:background-color 1s ease-in .2s;
+			-o-transition:background-color 1s ease-in .2s;
+			-ms-transition:background-color 1s ease-in .2s;
+			-moz-transition:background-color 1s ease-in .2s;
+			-webkit-transition:background-color 1s ease-in .2s;
+		}
+		.trans:hover{
+			background-color: #f00;
+		}
+		.test{
+			width: 50px;
+			height: 50px;
+			background-color: blue;
+			margin-top: 20px;
+		}
+		.test:hover{
+			width: 100%;
+		}
+		#t1{
+			transition:width 3s linear;
+		}
+		#t2{
+			transition:width 3s ease;
+		}
+		#t3{
+			transition:width 3s ease-in;
+		}
+		#t4{
+			transition:width 3s ease-out;
+		}
+		#t5{
+			transition:width 3s ease-in-out;
+		}
+	</style>
+</head>
+<body>
+	<div class="trans"></div>
+	<div class="test" id="t1"></div>
+	<div class="test" id="t2"></div>
+	<div class="test" id="t3"></div>
+	<div class="test" id="t4"></div>
+	<div class="test" id="t5"></div>
+</body>
+</html>

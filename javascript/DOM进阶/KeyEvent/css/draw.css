@@ -1,0 +1,46 @@
+*{
+	margin:0;
+	padding:0;
+}
+.title{
+	width:400px;
+	height:200px;
+	margin:0 auto;
+	margin-top:30px;
+	border:6px solid #aaa;
+	font-size:50px;
+	color:#aaa;
+	line-height:200px;
+	text-align:center;
+	border-radius:10px;
+	overflow:hidden;
+}
+#button{
+	width:400px;
+	height:50px;
+	margin:0 auto;
+}
+#button span{
+	display:block;
+	float:left;
+	width:120px;
+	height:30px;
+	line-height:30px;
+	margin:20px 35px;
+	border:1px solid #eee;
+	
+
+	background:#aaa;
+	font-size:20px;
+	font-family:"微软雅黑";
+	color:#fff;
+	text-align:center;
+	/*鼠标经过时变成手势*/
+	cursor:pointer;		
+	/*边框的边角变成圆的*/
+	border-radius:20px;
+	
+}
+#button #play{
+	background-color:red;
+}

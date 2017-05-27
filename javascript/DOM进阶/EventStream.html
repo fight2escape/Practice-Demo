@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" Content="text/html; charset=utf-8" />
+	<title>事件流</title>
+</head>
+<body>
+<div id="wrap">
+	<input type="button" value="button1" id="btn1" onclick="alert('hello world')" />
+	<input type="button" value="button2" id="btn2" />
+	<input type="button" value="button3" id="btn3" />
+	<a href="EStest.html" id="goto" >跳转</a>
+</div>
+
+<script>
+//DOM级事件流
+	var btn2 = document.getElementById("btn2");
+	btn2.onclick = function(){
+		alert("Hello World! again!");
+	};
+	//btn2.onclick = null;
+//DOM2级事件流
+/*	var btn3  = document.getElementById("btn3");
+	function newMsg () {
+		alert("Hello World!Hello World!");
+	}
+	function secMsg () {
+		alert("I'm the second one!");
+	}
+	btn3.addEventListener("click",newMsg,false);
+	btn3.addEventListener("click",secMsg,false);
+	btn3.removeEventListener("click",newMsg,false);
+	//IE中的调用方法,需要加上“on”了
+	btn3.attachEvent('onclick',newMsg);
+	btn3.detachEvent('onclick',newMsg);*/
+
+	//DOM2和DOM0兼容各个浏览器
+	var eventUtil = {
+	//添加句柄
+		addHandler:function(element,type,handler){
+			if(element.addEventListener){
+				element.addEventListener(type,handler,false);
+			}else if(element.attachEvent){
+				element.attachEvent('on'+type,handler);
+			}else{
+				element['on'+type] = handler;
+			}
+		},
+	//删除句柄
+		removeHandler:function(element,type,handler){
+			if(element.removeEventListener){
+				element.removeEventListener(type,handler,false);
+			}else if(element.detachEvent){
+				element.detachEvent('on'+type,handler);
+			}else{
+				element['on'+type] = null;
+			}
+		}
+	};
+	var btn3 = document.getElementById("btn3");
+	var wrap = document.getElementById("wrap");
+	var letto = document.getElementById("goto");
+	function newMsg (event) {
+		alert(event.type.nodeName);
+		event.stopPropagation();
+	}
+	function secMsg () {
+		alert("I'm the second one!");
+	}
+	function thrMsg (event){
+		alert(event.target.nodeName);
+	}
+	function stopMsg (event){
+		event.stopPropagation();
+	}
+	function preventMsg (event){
+		event.preventDefault();
+	}
+	eventUtil.addHandler(btn3,'click',secMsg);
+	eventUtil.addHandler(btn3,'click',newMsg);
+	eventUtil.addHandler(btn3,'click',thrMsg);
+	eventUtil.addHandler(wrap,'click',newMsg);
+	eventUtil.addHandler(letto,'click',stopMsg);
+	eventUtil.addHandler(letto,'click',preventMsg);
+	eventUtil.removeHandler(btn3,'click',secMsg);
+
+</script>
+</body>
+</html>

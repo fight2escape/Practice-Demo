@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+ 	<title>practice</title>
+ 	<style type="text/css">
+	.preserve{
+		perspective:400;
+		-webkit-perspective:400;
+		perspective-origin:center center;
+		-webkit-perspective-origin: center center;
+		-webkit-transform-style:preserve-3d;
+	}
+	
+	.show{
+		width: 300px;
+		height: 300px;
+		background-color: #000;
+		color:#fff;
+		text-align: center;
+		line-height: 300px;
+		font-size:300px;
+		font-weight:bold;
+		position:absolute;
+		left:50%;
+		margin-left:-150px;
+		transition:all 1s;
+	}
+	.control{
+		position:absolute;
+		left:50%;
+		top:330px;
+		margin-left:-145px;
+	}
+	.control button{
+		width: 150px;
+		height: 30px;
+		font-size: 20px;
+	}
+	#item1{
+		-webkit-transform-origin:left;
+		z-index : 1;
+	}
+	#item2,#item3,#item4,#item5,#item6{
+		-webkit-transform-origin:left;
+		transform:rotateY(0deg);
+		z-index : -10;
+	}
+ 	</style>
+ </head>
+ <body>
+ 	<div class="preserve">
+	 			
+	 		<div class="show" id="item1">1</div>
+	 		<div class="show" id="item2">2</div>
+	 		<div class="show" id="item3">3</div>
+	 		<div class="show" id="item4">4</div>
+	 		<div class="show" id="item5">5</div>
+	 		<div class="show" id="item6">6</div>
+ 		</div>
+ 	<div class="control">
+ 		<button onclick="prev()">prev</button>
+ 		<button onclick="next()">next</button>
+ 	</div>
+ <script type="text/javascript">
+var curPage = 1;
+function prev(){
+	if(curPage == 1){
+		return ;
+	}
+	var cur = document.getElementById('item'+curPage);
+	// cur.style.transform = "rotateY(180deg)";
+	cur.style.zIndex = curPage;
+	curPage--;
+	var now = document.getElementById('item'+curPage);
+	now.style.transform = "rotateY(0deg)";
+	now.style.zIndex = 10;
+}
+function next(){
+	if(curPage == 6){
+		return;
+	}
+	var cur = document.getElementById('item'+curPage);
+	cur.style.transform = "rotateY(-180deg)";
+	cur.style.zIndex = -curPage;
+	curPage++;
+	var now = document.getElementById('item'+curPage);
+	now.style.transform = "rotateY(0deg)";
+	now.style.zIndex = 10;
+}
+ </script>
+ </body>
+ </html> 
